@@ -1,9 +1,17 @@
-﻿public class KanbanTask
-{
-    public string ProjectName { get; set; }
-    public string Category { get; set; }
-    public string TaskName { get; set; }
+﻿using SQLite; // We must add this at the very top of the file!
 
-    // An Array strictly limited to 7 slots
-    public SubTask[] SubTasks { get; set; } = new SubTask[7];
+namespace CyclicKanban.Models
+{
+    public class KanbanTask
+    {
+        [PrimaryKey, AutoIncrement]
+        public int Id { get; set; }
+
+        public string ProjectName { get; set; }
+        public string Category { get; set; }
+        public string TaskName { get; set; }
+
+        // We will need to change this array shortly!
+        public SubTask[] SubTasks { get; set; } = new SubTask[7];
+    }
 }
