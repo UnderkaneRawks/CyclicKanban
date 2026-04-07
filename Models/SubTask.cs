@@ -1,11 +1,20 @@
-﻿public class SubTask
+﻿using SQLite; // Don't forget this at the top!
+
+namespace CyclicKanban.Models
 {
-    public string Name { get; set; }
-    public bool IsDone { get; set; }
+    public class SubTask
+    {
+        // Every table needs its own Primary Key
+        [PrimaryKey, AutoIncrement]
+        public int Id { get; set; }
 
-    // The '?' makes the TimeSpan nullable, meaning the user doesn't HAVE to set a timer.
-    public TimeSpan? TargetTime { get; set; }
-    public TimeSpan ActualTime { get; set; }
+        // The Foreign Key! This links it back to the specific KanbanTask
+        public int KanbanTaskId { get; set; }
 
-    public string Notes { get; set; }
+        public string Name { get; set; }
+        public bool IsDone { get; set; }
+        public TimeSpan? TargetTime { get; set; }
+        public TimeSpan ActualTime { get; set; }
+        public string Notes { get; set; }
+    }
 }

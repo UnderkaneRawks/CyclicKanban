@@ -11,7 +11,8 @@ namespace CyclicKanban.Models
         public string Category { get; set; }
         public string TaskName { get; set; }
 
-        // We will need to change this array shortly!
+        // Using [Ignore] so that SQLite doesn't try to store this array directly in the database
+        [Ignore]
         public SubTask[] SubTasks { get; set; } = new SubTask[7];
     }
 }
